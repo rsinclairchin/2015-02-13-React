@@ -11,6 +11,8 @@
 var React = require('react');
 var sortBy = require('sort-by');
 
+var { h1, div, ul, li } = React.DOM;
+
 var DATA = {
   title: 'Menu',
   items: [
@@ -21,13 +23,20 @@ var DATA = {
   ]
 };
 
-var Menu = React.createClass({
-  render () {
-    return null;
-  }
-});
+var element = (
+  div({},
+    h1({}, "DATA")
+    )
+  );
 
-React.render(<Menu/>, document.body, () => {
-  require('./tests').run();
-});
+// var Menu = React.createClass({
+//   render (element, document.body) {
+//     return null;
+//   }
+// });
 
+// React.render(<Menu/>, document.body, () => {
+//   require('./tests').run();
+// });
+
+React.render(element, document.body)
