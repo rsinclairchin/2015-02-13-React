@@ -23,20 +23,40 @@ var DATA = {
   ]
 };
 
-var element = (
-  div({},
-    h1({}, "DATA")
-    )
-  );
+// var element = (
+//   div({},
+//     h1({}, "DATA")
+//     )
+//   );
 
 // var Menu = React.createClass({
-//   render (element, document.body) {
-//     return null;
+//   render () {
+//     var items = DATA.items.map((food) => li({}, food.name))
+//     return(
+//       div({},
+//         h1({}, DATA.title)
+//         ul({}, items)
+//         )
+//     );
 //   }
 // });
 
-// React.render(<Menu/>, document.body, () => {
-//   require('./tests').run();
-// });
+var Menu = React.createClass({
+  render () {
+    var mexican = DATA.items.filter((food) => food.type === 'mexican')
+    var sorted = mexican.sort(sortBy('name'))
+    var items = sorted.map((food) => <li> {food.name} </li>)
+    return(
+      <div>
+        <h1> {DATA.title} </h1>
+        <ul>
+          {items}
+        </ul>
+      </div>
+    );
+  }
+});
 
-React.render(element, document.body)
+React.render(<Menu/>, document.body);
+
+// React.render(element, document.body)
