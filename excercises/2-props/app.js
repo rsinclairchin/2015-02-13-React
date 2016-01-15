@@ -35,6 +35,13 @@ var emailType = (props, propName, componentName) => {
   );
 };
 
+var sizeType = (props, propName, componentName) => {
+  warning(
+      parseInt(props.size),
+      `Invalid size '${props.size}' sent to 'Gravatar'. Check the render method of '${componentName}'.`
+    );
+};
+
 var Gravatar = React.createClass({
   propTypes: {
     email: emailType
